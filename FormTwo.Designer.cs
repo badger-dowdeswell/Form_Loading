@@ -63,8 +63,8 @@
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormTwo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "This is Form Two";            
-            this.Load += new System.EventHandler(this.FormTwo_Load_1);
+            this.Text = "This is Form Two";         
+            
             this.ResumeLayout(false);
 
         }

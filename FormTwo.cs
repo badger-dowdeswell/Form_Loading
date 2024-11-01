@@ -4,7 +4,13 @@
 // FormTwo has a child of its own called
 // FormThree. FormThree is a grandchild of
 // FormMain.
-
+//
+// Revision History
+// ================
+// 21.05.2023 BRD Original version.
+// 30.10.2024 BRD Revised to make the code simpler.
+// 01.11.2024 BRD Updated documentation.
+//
 using System;
 using System.Windows.Forms;
 
@@ -54,11 +60,6 @@ namespace Form_Loading {
 
             // Load Form Three.
             FormThree.Show();
-        }
-
-        private void FormTwo_Load_1(object sender, EventArgs e) {
-
-        }
-               
+        }    
     }
 }

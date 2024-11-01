@@ -1,8 +1,9 @@
 ﻿//
-// FORM SWITCHING EXAMPLE
-// ======================
-// Demonstrates how to switch between different
-// forms connected in the same application.
+// FORM LOADING AND SWITCHING EXAMPLE
+// ==================================
+// This project demonstrates how to switch between
+// different forms connected together in the same
+// application.
 //
 // FormMain is the main form. It has two children
 // and one grandchild:
@@ -10,17 +11,22 @@
 //          FormMain--> FormOne    
 //                 '--> FormTwo --> FormThree
 //
-// Look at the code to understand why Form One
-// cannot show Form Two but it can go back to
-// FormMain.
+// Look at the code to understand why Form Main 
+// can show FormOne and FormTwo by looking at
+// the button handling event code. 
 //
-// Look at the code to understand why FormTwo
-// can go back to FormMain or show FormThree.
+// Look at the code to understand why FormOne is
+// modal and displays over the top of FormMain.
+// Then look at how FormTwo hides FormMain, how
+// it can then load FormThree, and how it can
+// can go back to FormTwo and FormMain without
+// forgetting where it came from.
 //
 // Revision History
 // ================
 // 21.05.2023 BRD Original version.
-// 30.10.2024 BRD Revised to make the code simpler
+// 30.10.2024 BRD Revised to make the code simpler.
+// 01.11.2024 BRD Updated documentation.
 //
 using System;
 using System.Windows.Forms;
@@ -35,7 +41,10 @@ namespace Form_Loading {
 
         Form formOne;
 
-        // FormTwo can be accessed from FormMain
+        // FormTwo can be accessed from FormMain. Remember that
+        // Forms are objects and you need to created them just
+        // like you create Classes.
+        //
         Form FormTwo;        
 
         //
@@ -44,8 +53,14 @@ namespace Form_Loading {
         public FormMain() {
             InitializeComponent();
 
-            // This creates FormOne and FormTwo. The this command
-            // tells each form who its parent is.
+            // This creates FormOne and FormTwo. Note how the
+            // Constructor tells each form who its parent is by
+            // passing a reference of type Form to the child
+            // that it can remember for later when it needs to
+            // go back to where it came from. FormOne also accepts
+            // an integer parameter you can pass to it from the
+            // parent form and use inside FormOne.
+            //
             totalDistance = 1024;
             formOne = new FormOne(this, totalDistance);
 
@@ -64,10 +79,13 @@ namespace Form_Loading {
         // =========================
         private void buttonLoadFormOne_Click(object sender, EventArgs e) {
             // FormMain is the current visible form. It can be referenced with
-            // the this keyword. Make FormMain invisible
-            //this.Visible = false;
+            // the this keyword.
+            //
+            // If you want to make FormMain invisible
+            // remove the comment from the next line:
+            // this.Visible = false;
 
-            // Now tell FormOne to show itself.
+            // Tell FormOne to show itself.
             formOne.ShowDialog();
         }
 
